@@ -17,7 +17,7 @@ interface Props {
   onSave: (character: Character) => void;
 }
 
-export const HotelComponent: React.FunctionComponent<Props> = (props) => {
+export const CharacterComponent: React.FunctionComponent<Props> = (props) => {
   const { character, cities, onSave } = props;
 
   return (

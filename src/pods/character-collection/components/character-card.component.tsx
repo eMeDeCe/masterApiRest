@@ -10,34 +10,34 @@ import Avatar from '@material-ui/core/Avatar/Avatar';
 import IconButton from '@material-ui/core/IconButton/IconButton';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { HotelEntityVm } from '../character-collection.vm';
+import { CharacterEntityVm } from '../character-collection.vm';
 import * as classes from './character-card.styles';
 
 interface Props {
-  character: HotelEntityVm;
-  onEdit: (id: string) => void;
-  onDelete: (id: string) => void;
+  character: CharacterEntityVm;
+  onEdit: (id: number) => void;
+  onDelete: (id: number) => void;
 }
 
-export const HotelCard: React.FunctionComponent<Props> = (props) => {
+export const CharacterCard: React.FunctionComponent<Props> = (props) => {
   const { character, onEdit, onDelete } = props;
 
   return (
     <Card>
       <CardHeader
-        avatar={<Avatar aria-label="Character">{character.rating}</Avatar>}
+        avatar={<Avatar aria-label="Character">{character.species}</Avatar>}
         title={character.name}
-        subheader={character.address}
+        subheader={character.gender}
       />
       <CardContent>
         <div className={classes.content}>
-          <CardMedia
+          {/*<CardMedia
             image={character.picture}
             title={character.name}
             style={{ height: 0, paddingTop: '56.25%' }}
-          />
+          />*/}
           <Typography variant="subtitle1" gutterBottom>
-            {character.description}
+            {character.species}
           </Typography>
         </div>
       </CardContent>

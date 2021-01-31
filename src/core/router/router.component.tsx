@@ -14,12 +14,12 @@ export const RouterComponent: React.FunctionComponent = () => {
         />
         <Route
           exact={true}
-          path={switchRoutes.createHotel}
+          path={switchRoutes.createCharacter}
           component={HotelScene}
         />
         <Route
           exact={true}
-          path={switchRoutes.editHotel}
+          path={switchRoutes.editCharacter}
           component={HotelScene}
         />
       </Switch>
