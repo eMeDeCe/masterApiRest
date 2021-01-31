@@ -31,11 +31,11 @@ export const CharacterCard: React.FunctionComponent<Props> = (props) => {
       />
       <CardContent>
         <div className={classes.content}>
-          {/*<CardMedia
-            image={character.picture}
+          <CardMedia
+            image={character.image}
             title={character.name}
             style={{ height: 0, paddingTop: '56.25%' }}
-          />*/}
+          />
           <Typography variant="subtitle1" gutterBottom>
             {character.species}
           </Typography>
