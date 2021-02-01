@@ -2,9 +2,15 @@ import { CharacterEntityApi } from './character-collection.api-model';
 import { mockCharacterCollection } from './character-collection.mock-data';
 
 let characterCollection = [...mockCharacterCollection];
+const url = 'https://rickandmortyapi.com/api/character'
 
-export const getCharacterCollection = async (): Promise<CharacterEntityApi[]> => {
-  return characterCollection;
+export const getCharacterCollection = async () => {
+   const response = await fetch(url);
+  if (response.ok) {
+    return await response.json();
+  } else {
+    throw Error(response.statusText);
+  }
 };
 
 export const getCharacter = async (id: number): Promise<boolean> => {

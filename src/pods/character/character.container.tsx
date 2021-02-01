@@ -1,13 +1,13 @@
 import React from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import * as api from './api';
-import { createEmptyHotel, Character } from './character.vm';
+import { createEmptyCharacter, Character } from './character.vm';
 import { mapCharacterFromApiToVm, mapCharacterFromVmToApi } from './character.mappers';
 import { Lookup } from 'common/models';
 import { CharacterComponent } from './character.component';
 
 export const CharacterContainer: React.FunctionComponent = (props) => {
-  const [character, setCharacter] = React.useState<Character>(createEmptyHotel());
+  const [character, setCharacter] = React.useState<Character>(createEmptyCharacter());
   const [cities, setCities] = React.useState<Lookup[]>([]);
   const {id} : any = useParams(); // Impotante revisar *ma*
   const history = useHistory();
