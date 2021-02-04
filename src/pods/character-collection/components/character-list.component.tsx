@@ -24,31 +24,24 @@ const useStyles = makeStyles((theme) => ({
 
 interface Props {
     character: CharacterEntityVm;
-    onEdit: (id: number) => void;
+    onDetails: (id: number) => void;
 }
   
 
 export const CharacterList: React.FunctionComponent<Props> = (props) => {
   const classes = useStyles();
-  const { character, onEdit } = props;
+  const { character, onDetails } = props;
   return (
     <List className={classes.root}>
-      <ListItem alignItems="flex-start">
+      <ListItem alignItems="flex-start"  onClick={() => onDetails(character.id)}>
         <ListItemAvatar>
           <Avatar alt={character.name} src={character.image} />
         </ListItemAvatar>
         <ListItemText
-          primary="Brunch this weekend?"
+          primary= {character.name}
           secondary={
             <React.Fragment>
-              <Typography
-                component="span"
-                variant="body2"
-                className={classes.inline}
-                color="textPrimary"
-              >
-               {character.name}
-              </Typography>
+              
               {character.gender}
             </React.Fragment>
           }

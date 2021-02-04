@@ -16,5 +16,5 @@ export interface CharacterEntityVm {
   image: string;
   episode: string[];
   url: string;
-  created: string
+  created: string;
 }

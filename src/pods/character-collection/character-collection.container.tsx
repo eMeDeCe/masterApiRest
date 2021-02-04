@@ -17,20 +17,22 @@ export const CharacterCollectionContainer = () => {
     history.push(linkRoutes.createCharacter);
   };
 
-  const handleEdit = (id: number) => {
-    history.push(linkRoutes.editCharacter(id));
+  const handleDetails = (id: number) => {
+    history.push(linkRoutes.detailsCharacter(id));
+    console.log("aqui >>", id);
   };
 
   const handleDelete = async (id: number) => {
-    await getCharacter(id);
-    loadCharacterCollection();
+    /*await getCharacter(id);
+    loadCharacterCollection();*/
+    console.log("aqui");
   };
 
   return (
     <CharacterCollectionComponent
       characterCollection={characterCollection}
       oncreateCharacter={handleCreateCharacter}
-      onEdit={handleEdit}
+      onDetails={handleDetails}
       onDelete={handleDelete}
     />
   );
