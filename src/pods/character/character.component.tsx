@@ -1,50 +1,58 @@
 import React from 'react';
-import { Formik, Form } from 'formik';
-import {
-  TextFieldComponent,
-  SelectComponent,
-  RatingComponent,
-} from 'common/components';
-import { Button } from '@material-ui/core';
-import { formValidation } from './character.validations';
 import { Character } from './character.vm';
-import * as classes from './character.styles';
-import { Lookup } from 'common/models';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 140,
+  },
+});
+
+
 
 interface Props {
   character: Character;
-  cities: Lookup[];
-  onSave: (character: Character) => void;
 }
 
 export const CharacterComponent: React.FunctionComponent<Props> = (props) => {
-  const { character, cities, onSave } = props;
+  const { character} = props;
+  const classes = useStyles();
 
   return (
-    <Formik
-      onSubmit={onSave}
-      initialValues={character}
-      enableReinitialize={true}
-      validate={formValidation.validateForm}
-    >
-      {() => (
-        <Form className={classes.root}>
-          <TextFieldComponent name="name" label="Name" />
-          <TextFieldComponent name="address" label="Address" />
-          <RatingComponent name="rating" max={5} />
-          <SelectComponent name="city" label="City" items={cities} />
-          <TextFieldComponent
-            name="description"
-            label="Description"
-            multiline={true}
-            rows={3}
-            rowsMax={5}
-          />
-          <Button type="submit" variant="contained" color="primary">
-            Save
-          </Button>
-        </Form>
-      )}
-    </Formik>
+    <>
+      <Card className={classes.root}>
+        <CardActionArea>
+          <CardMedia
+            component="img"
+            className={character.name}
+            src={character.image}
+            title="Contemplative Reptile" />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+            {character.name}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+               {character.location.name}
+            </Typography>
+            <Typography variant="body2" component="p">
+            {character.origin.name}  <br />
+            {character.status}  <br />
+            {character.species}  <br />
+            {character.gender}  <br />
+            <br />
+          </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Card></>
   );
 };

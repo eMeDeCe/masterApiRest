@@ -18,8 +18,8 @@ export const CharacterCollectionContainer = () => {
   };
 
   const handleDetails = (id: number) => {
+    
     history.push(linkRoutes.detailsCharacter(id));
-    console.log("aqui >>", id);
   };
 
   const handleDelete = async (id: number) => {

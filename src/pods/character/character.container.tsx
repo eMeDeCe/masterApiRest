@@ -8,7 +8,6 @@ import { CharacterComponent } from './character.component';
 
 export const CharacterContainer: React.FunctionComponent = (props) => {
   const [character, setCharacter] = React.useState<Character>(createEmptyCharacter());
-  const [cities, setCities] = React.useState<Lookup[]>([]);
   const {id} : any = useParams(); // Impotante revisar *ma*
   const history = useHistory();
 
@@ -16,6 +15,7 @@ export const CharacterContainer: React.FunctionComponent = (props) => {
   const handleLoadCharacter = async () => {
     const apiCharacter = await api.getCharacter(id);
     setCharacter(mapCharacterFromApiToVm(apiCharacter));
+    console.log(character);
   };
 
   React.useEffect(() => {
@@ -34,5 +34,5 @@ export const CharacterContainer: React.FunctionComponent = (props) => {
     }
   };
 
-  return <CharacterComponent character={character} cities={cities} onSave={handleSave} />;
+  return <CharacterComponent character={character} />;
 };
