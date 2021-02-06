@@ -17,8 +17,7 @@ export const CharacterCollectionContainer = () => {
     history.push(linkRoutes.createCharacter);
   };
 
-  const handleDetails = (id: number) => {
-    
+  const handleDetails = (id: number) => {  
     history.push(linkRoutes.detailsCharacter(id));
   };
 
@@ -28,12 +27,17 @@ export const CharacterCollectionContainer = () => {
     console.log("aqui");
   };
 
+  const handleComments = (id: number) => {  
+    console.log("Container comentario >> ", id);
+  };
+
   return (
     <CharacterCollectionComponent
       characterCollection={characterCollection}
       oncreateCharacter={handleCreateCharacter}
       onDetails={handleDetails}
       onDelete={handleDelete}
+      onComment={handleComments}
     />
   );
 };
