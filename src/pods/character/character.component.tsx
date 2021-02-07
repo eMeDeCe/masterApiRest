@@ -8,25 +8,43 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: 500,
+    },
   },
   media: {
     height: 140,
   },
-});
+  hideForm: {
+    display: 'none'
+  },
+  showForm: {
+    display: 'block'
+  }
+}));
 
 
 
 interface Props {
   character: Character;
+  addComment: (id: number) => void;
 }
 
 export const CharacterComponent: React.FunctionComponent<Props> = (props) => {
   const { character} = props;
   const classes = useStyles();
+
+  const [showFormComment, setShowFormComment] = React.useState(false);
 
   return (
     <>
@@ -45,14 +63,42 @@ export const CharacterComponent: React.FunctionComponent<Props> = (props) => {
                {character.location.name}
             </Typography>
             <Typography variant="body2" component="p">
-            {character.origin.name}  <br />
-            {character.status}  <br />
-            {character.species}  <br />
-            {character.gender}  <br />
+            {character.origin.name}  <br/>
+            {character.status}  <br/>
+            {character.species}  <br/>
+            {character.gender}  <br/>
             <br />
           </Typography>
           </CardContent>
         </CardActionArea>
-      </Card></>
+      </Card>
+      <Card className={classes.root}>
+      <CardActionArea>
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+          Comentarios
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Aquí van a ir los comentarios
+          </Typography>
+        </CardContent>
+        <Button variant="contained" onClick={() => showFormComment ? setShowFormComment(false) : setShowFormComment(true)}> Comentario</Button>
+      </CardActionArea>
+      </Card>
+
+      <div className={showFormComment ? classes.showForm : classes.hideForm}>
+        <form className={classes.root} noValidate autoComplete="off">
+        <TextField
+          id="standard-multiline-flexible"
+          label="Modifica la opinión"
+          multiline
+          rowsMax={4}
+        />
+          <Button variant="contained">Guardar</Button>
+        </form>
+      </div>
+      
+      </>
+
   );
 };

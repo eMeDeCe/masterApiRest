@@ -25,14 +25,12 @@ const useStyles = makeStyles((theme) => ({
 interface Props {
     character: CharacterEntityVm;
     onDetails: (id: number) => void;
-    onComment: (id: number) => void;
-
 }
   
 
 export const CharacterList: React.FunctionComponent<Props> = (props) => {
   const classes = useStyles();
-  const { character, onDetails, onComment } = props;
+  const { character, onDetails } = props;
   return (
     <List className={classes.root}>
       <ListItem alignItems="flex-start"  onClick={() => onDetails(character.id)}>
@@ -49,10 +47,6 @@ export const CharacterList: React.FunctionComponent<Props> = (props) => {
         />
        
       </ListItem>  
-      <ListItemText 
-          secondary="Comentarios"
-          onClick={() => onComment(character.id)}
-        />
       <Divider variant="inset" component="li" />
     </List>
   );

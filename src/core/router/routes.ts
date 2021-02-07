@@ -5,6 +5,7 @@ interface SwitchRoutes {
   characterCollection: string;
   createCharacter: string;
   detailsCharacter: string;
+  addComment: string;
 }
 
 export const switchRoutes: SwitchRoutes = {
@@ -12,6 +13,7 @@ export const switchRoutes: SwitchRoutes = {
   characterCollection: '/characters',
   createCharacter: '/characters/create',
   detailsCharacter: '/characters/:id',
+  addComment: '/characters/comment/:id',
 };
 
 type NavigationFunction = (id: number) => string;
@@ -19,6 +21,8 @@ type NavigationFunction = (id: number) => string;
 interface LinkRoutes extends Omit<SwitchRoutes, 'detailsCharacter'> {
   detailsCharacter: NavigationFunction;
 }
+
+
 
 export const linkRoutes: LinkRoutes = {
   ...switchRoutes,

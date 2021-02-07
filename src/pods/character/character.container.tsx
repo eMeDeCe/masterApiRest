@@ -24,7 +24,7 @@ export const CharacterContainer: React.FunctionComponent = (props) => {
     }
   }, []);
 
-  const handleSave = async (character: Character) => {
+  const handleSaveComment = async (character: Character) => {
     const apiCharacter = mapCharacterFromVmToApi(character);
     const success = await api.saveCharacter(apiCharacter);
     if (success) {
@@ -34,5 +34,6 @@ export const CharacterContainer: React.FunctionComponent = (props) => {
     }
   };
 
-  return <CharacterComponent character={character} />;
+
+  return <CharacterComponent character={character}  />;
 };
