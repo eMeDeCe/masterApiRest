@@ -34,6 +34,10 @@ export const CharacterContainer: React.FunctionComponent = (props) => {
     }
   };
 
+  const handleSave = (character: Character) => {
+   console.log("nuevo comentario >>");
+  };
 
-  return <CharacterComponent character={character}  />;
+
+  return <CharacterComponent character={character}  onSave={handleSave}/>;
 };
