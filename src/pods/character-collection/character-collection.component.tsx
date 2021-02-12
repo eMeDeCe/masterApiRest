@@ -19,9 +19,7 @@ export const CharacterCollectionComponent: React.FunctionComponent<Props> = (
 
   return (
     <div className={classes.root}>
-      <Button variant="contained" color="primary" onClick={oncreateCharacter}>
-        Add character
-      </Button>
+
 
       <ul className={classes.list}>
         {characterCollection.map((character) => (
