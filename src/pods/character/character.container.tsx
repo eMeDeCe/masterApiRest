@@ -15,7 +15,6 @@ export const CharacterContainer: React.FunctionComponent = (props) => {
   const handleLoadCharacter = async () => {
     const apiCharacter = await api.getCharacter(id);
     setCharacter(mapCharacterFromApiToVm(apiCharacter));
-    console.log(character);
   };
 
   React.useEffect(() => {
@@ -34,8 +33,16 @@ export const CharacterContainer: React.FunctionComponent = (props) => {
     }
   };
 
-  const handleSave = (character: Character) => {
-   console.log("nuevo comentario >>");
+  const handleSave = async () => {
+    console.log("**", character);
+    const apiCharacter = mapCharacterFromVmToApi(character);
+    const success = await api.saveCharacter(apiCharacter);
+    console.log("api character >>", apiCharacter);
+    if (success) {
+      history.goBack();
+    } else {
+      alert('Error on save hotel');
+    }
   };
 
 

@@ -72,6 +72,39 @@ export const CharacterComponent: React.FunctionComponent<Props> = (props) => {
           </CardContent>
         </CardActionArea>
       </Card>
+      <Card className={classes.root}>
+      <CardActionArea>
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+          Comentarios
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Aquí van a ir los comentarios
+          </Typography>
+        </CardContent>
+        <Button variant="contained" onClick={() => showFormComment ? setShowFormComment(false) : setShowFormComment(true)}> Comentario</Button>
+      </CardActionArea>
+      </Card>
+
+      <div className={showFormComment ? classes.showForm : classes.hideForm}>
+        <Formik
+        onSubmit={onSave}
+        initialValues={character}
+        >
+        {() => (
+          <Form className={classes.root} noValidate autoComplete="off">
+            <TextField
+              id="standard-multiline-flexible"
+              label="Modifica la opinión"
+              multiline
+              rowsMax={4}
+            />
+            <Button type="submit" variant="contained">Guardar</Button>
+          </Form>
+        )}
+        </Formik>
+      </div>
+      
       </>
   );
 };
