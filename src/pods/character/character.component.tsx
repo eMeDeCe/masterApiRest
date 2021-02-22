@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Character } from './character.vm';
+import { Comment, createEmptyComment } from './comment.vm';
 import { Formik, Form } from 'formik';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -8,7 +9,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
+import {  TextFieldComponent } from 'common/components';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,18 +34,39 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-
-
 interface Props {
   character: Character;
-  onSave: (character: Character) => void;
+  comment: Comment;
+  newComment: Comment;
+  onSave: () => void;
 }
 
 export const CharacterComponent: React.FunctionComponent<Props> = (props) => {
-  const { character, onSave} = props;
+  const { character, onSave, comment, newComment } = props;
   const classes = useStyles();
-
   const [showFormComment, setShowFormComment] = React.useState(false);
+  //const [newComment, setNewComment] = React.useState(createEmptyComment);
+
+
+  function saveComment (event) {
+    newComment.id = character.id;
+    newComment.text = event.target.value;
+    if (comment === undefined) {
+      newComment.exist = false;
+    } else {
+      newComment.exist = true;
+    }
+
+  }
+
+  function comments () {
+    if (comment !== undefined) {
+      return (<Typography key={comment.id} variant="body2" color="textSecondary" component="p">
+      {comment.text}
+      </Typography>)
+    }
+    
+  }
 
   return (
     <>
@@ -78,32 +100,29 @@ export const CharacterComponent: React.FunctionComponent<Props> = (props) => {
           <Typography gutterBottom variant="h5" component="h2">
           Comentarios
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Aquí van a ir los comentarios
-          </Typography>
+    {
+      comments()
+    }
         </CardContent>
-        <Button variant="contained" onClick={() => showFormComment ? setShowFormComment(false) : setShowFormComment(true)}> Comentario</Button>
       </CardActionArea>
+      <Button variant="contained" onClick={() => showFormComment ? setShowFormComment(false) : setShowFormComment(true)}> Comentario</Button>
       </Card>
-
-      <div className={showFormComment ? classes.showForm : classes.hideForm}>
-        <Formik
+    <div className={showFormComment ? classes.showForm : classes.hideForm}>
+      <Formik
         onSubmit={onSave}
-        initialValues={character}
-        >
-        {() => (
-          <Form className={classes.root} noValidate autoComplete="off">
-            <TextField
-              id="standard-multiline-flexible"
-              label="Modifica la opinión"
-              multiline
-              rowsMax={4}
-            />
-            <Button type="submit" variant="contained">Guardar</Button>
-          </Form>
-        )}
-        </Formik>
-      </div>
+        initialValues={newComment}
+        enableReinitialize={true}
+      >
+      {() => (
+        <Form className={classes.root}>
+          <TextFieldComponent name="nuevoComentario" label="Comentario" onChange={saveComment} />
+          <Button type="submit" variant="contained" color="primary">
+            Save
+          </Button>
+        </Form>
+      )}
+      </Formik>
+    </div>
       
       </>
   );

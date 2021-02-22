@@ -22,4 +22,5 @@ export const mapFromApiToVm = (
   episode: character.episode,
   url: character.url,
   created: character.created,
+commentId: character.commentId,
 });

@@ -13,7 +13,7 @@ export interface Character {
   image: string;
   episode:  string[];
   url: string;
-  created: string
+  created: string;
 }
 
 export const createEmptyCharacter = (): Character => ({
@@ -31,5 +31,5 @@ export const createEmptyCharacter = (): Character => ({
   image: '',
   episode: [''],
   url: '',
-  created: ''
+  created: '',
 });

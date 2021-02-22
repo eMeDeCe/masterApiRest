@@ -23,6 +23,7 @@ export const mapCharacterFromApiToVm = (
   episode: character.episode,
   url: character.url,
   created: character.created,
+commentId: character.commentId,
 });
 
 export const mapCharacterFromVmToApi = (character: viewModel.Character): apiModel.Character =>
@@ -46,4 +47,5 @@ export const mapCharacterFromVmToApi = (character: viewModel.Character): apiMode
   episode: character.episode,
   url: character.url,
   created: character.created,
+commentId: character.commentId,
 } as unknown) as apiModel.Character);

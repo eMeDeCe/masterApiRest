@@ -5,7 +5,7 @@ interface SwitchRoutes {
   characterCollection: string;
   createCharacter: string;
   detailsCharacter: string;
-  addComment: string;
+  addcommentId: number;
 }
 
 export const switchRoutes: SwitchRoutes = {
@@ -13,7 +13,7 @@ export const switchRoutes: SwitchRoutes = {
   characterCollection: '/characters',
   createCharacter: '/characters/create',
   detailsCharacter: '/characters/:id',
-  addComment: '/characters/comment/:id',
+//  addcommentId: '/characters/comment/:id',
 };
 
 type NavigationFunction = (id: number) => string;
