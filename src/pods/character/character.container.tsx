@@ -21,9 +21,7 @@ export const CharacterContainer: React.FunctionComponent = (props) => {
   };
   const handleLoadComment = async () => {
     const apiComment = await api.getComment(id);
-    //console.log(">>", apiComment);
     setComment(apiComment);
-    //setCharacter(mapCharacterFromApiToVm(apiCharacter));
   };
 
   React.useEffect(() => {
@@ -32,13 +30,16 @@ export const CharacterContainer: React.FunctionComponent = (props) => {
       handleLoadComment();
     }
   }, []);
+  React.useEffect(() => {
+      handleLoadComment();
+      
+  }, [newComment.text]);
 
   const handleSave = async () => {
-    console.log("handle Save >>", newComment);
-    //const apiCharacter = mapCharacterFromVmToApi(character);
     const success = await api.saveComment(newComment);
     if (success) {
-      history.goBack();
+      //history.goBack();
+      setComment(newComment);
     } else {
       alert('Error on save comment');
     }

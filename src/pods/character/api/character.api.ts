@@ -26,7 +26,7 @@ export const getComment = async (idCharacter: number) => {
       throw Error(response.statusText);
     }
   } catch(e) {
-    console.log("Cannot pretend to be a bank!");
+    console.log("ERROR", e);
   }
   
  
@@ -34,7 +34,8 @@ export const getComment = async (idCharacter: number) => {
 };
 
 export const saveComment = async (comment): Promise<boolean> => {
-  console.log("este es el que se guarda >>:", comment);
+  console.log("dentro del saveComment");
+  console.log("exist ", comment.exist);
   if (!comment.exist) {
     await fetch(characterListUrl, {
       method: 'POST',

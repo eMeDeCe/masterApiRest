@@ -618,24 +618,28 @@
   "comments": [
     {
       "id": 1,
-      "text": "sd",
+      "text": "modificando",
       "exist": true
     },
     {
-      "id": 2,
-      "text": "Morty comentario Dos",
+      "id": 7,
+      "text": "escribiendo",
       "exist": true
     },
     {
-      "id": 3,
-      "text": "Me mola mogollón",
+      "id": 10,
+      "text": "ggg",
+      "exist": true
+    },
+    {
+      "id": 12,
+      "text": "buenas",
       "exist": true
     },
     {
       "id": 9,
-      "text": "Este va bien tambien",
-      "exist": false,
-      "date": "21/02/2021"
+      "text": "jijij",
+      "exist": true
     }
   ]
 }

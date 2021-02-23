@@ -21,6 +21,5 @@ export const mapFromApiToVm = (
   image: character.image,
   episode: character.episode,
   url: character.url,
-  created: character.created,
-commentId: character.commentId,
+  created: character.created
 });

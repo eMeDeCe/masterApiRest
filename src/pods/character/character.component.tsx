@@ -46,6 +46,7 @@ export const CharacterComponent: React.FunctionComponent<Props> = (props) => {
   const classes = useStyles();
   const [showFormComment, setShowFormComment] = React.useState(false);
   //const [newComment, setNewComment] = React.useState(createEmptyComment);
+  const [initialValue, setInitialValue] =  React.useState("");
 
 
   function saveComment (event) {
@@ -53,9 +54,14 @@ export const CharacterComponent: React.FunctionComponent<Props> = (props) => {
     newComment.text = event.target.value;
     if (comment === undefined) {
       newComment.exist = false;
+      console.log("dentro de uno vacio");
     } else {
       newComment.exist = true;
+      console.log("dentro de uno lleno");
     }
+  }
+
+  function valuesForm () {
 
   }
 
@@ -67,6 +73,7 @@ export const CharacterComponent: React.FunctionComponent<Props> = (props) => {
     }
     
   }
+
 
   return (
     <>
@@ -100,9 +107,7 @@ export const CharacterComponent: React.FunctionComponent<Props> = (props) => {
           <Typography gutterBottom variant="h5" component="h2">
           Comentarios
           </Typography>
-    {
-      comments()
-    }
+          {comments()}
         </CardContent>
       </CardActionArea>
       <Button variant="contained" onClick={() => showFormComment ? setShowFormComment(false) : setShowFormComment(true)}> Comentario</Button>
@@ -115,8 +120,8 @@ export const CharacterComponent: React.FunctionComponent<Props> = (props) => {
       >
       {() => (
         <Form className={classes.root}>
-          <TextFieldComponent name="nuevoComentario" label="Comentario" onChange={saveComment} />
-          <Button type="submit" variant="contained" color="primary">
+          <TextFieldComponent name="nuevoComentario" label="Comentario" onChange={saveComment}  value={initialValue}/>
+          <Button type="submit" variant="contained" color="primary" >
             Save
           </Button>
         </Form>
