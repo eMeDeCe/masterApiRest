@@ -1,9 +1,9 @@
 export interface Lookup {
-  id: number;
+  id: string;
   name: string;
 }
 
 export const createEmptyLookup = (): Lookup => ({
-  id: 0,
+  id: '',
   name: '',
 });

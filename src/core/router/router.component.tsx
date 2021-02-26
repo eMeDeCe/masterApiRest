@@ -9,17 +9,17 @@ export const RouterComponent: React.FunctionComponent = () => {
       <Switch>
         <Route
           exact={true}
-          path={[switchRoutes.root, switchRoutes.characterCollection]}
+          path={[switchRoutes.root, switchRoutes.hotelCollection]}
           component={HotelCollectionScene}
         />
         <Route
           exact={true}
-          path={switchRoutes.createCharacter}
+          path={switchRoutes.createHotel}
           component={HotelScene}
         />
         <Route
           exact={true}
-          path={switchRoutes.detailsCharacter}
+          path={switchRoutes.editHotel}
           component={HotelScene}
         />
       </Switch>
