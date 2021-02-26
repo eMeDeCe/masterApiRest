@@ -1,1 +1,1 @@
-export * from './hotel.api';
+export * from './character.api';

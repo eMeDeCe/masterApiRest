@@ -1,10 +1,10 @@
-import { getHotelList, Hotel } from '../db';
+import { getCharacterList, Character } from '../db';
 
 export const resolvers = {
   Query: {
-    hotels: async (): Promise<Hotel[]> => {
-      const hotels = await getHotelList();
-      return hotels;
+    characters: async (): Promise<Character[]> => {
+      const characters = await getCharacterList();
+      return characters;
     },
   },
 };

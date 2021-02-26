@@ -1,9 +1,9 @@
-export interface Hotel {
+export interface Character {
   id: string;
   type: string;
   name: string;
-  created: Date;
-  modified: Date;
+  created: number;
+  modified: number;
   address1: string;
   airportCode: string;
   amenityMask: number;
@@ -12,9 +12,9 @@ export interface Hotel {
   countryCode: string;
   deepLink: string;
   highRate: number;
-  hotelId: number;
-  hotelInDestination: boolean;
-  hotelRating: number;
+  characterId: number;
+  characterInDestination: boolean;
+  characterRating: number;
   location: {
     latitude: number;
     longitude: number;
@@ -34,4 +34,13 @@ export interface Hotel {
   thumbNailUrl: string;
   tripAdvisorRating: number;
   tripAdvisorRatingUrl: string;
+}
+
+export interface CharacterEdit {
+  id: string;
+  name: string;
+  address1: string;
+  city: string;
+  shortDescription: string;
+  characterRating: number;
 }

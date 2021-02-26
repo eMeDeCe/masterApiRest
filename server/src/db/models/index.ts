@@ -1,1 +1,1 @@
-export * from './hotel.model';
+export * from './character.model';

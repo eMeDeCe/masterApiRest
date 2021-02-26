@@ -1,9 +1,9 @@
-export interface Hotel {
+export interface CharacterEntityApi {
   id: string;
   type: string;
   name: string;
-  created: number;
-  modified: number;
+  created: Date;
+  modified: Date;
   address1: string;
   airportCode: string;
   amenityMask: number;
@@ -12,9 +12,9 @@ export interface Hotel {
   countryCode: string;
   deepLink: string;
   highRate: number;
-  hotelId: number;
-  hotelInDestination: boolean;
-  hotelRating: number;
+  characterId: number;
+  characterInDestination: boolean;
+  characterRating: number;
   location: {
     latitude: number;
     longitude: number;
@@ -34,13 +34,4 @@ export interface Hotel {
   thumbNailUrl: string;
   tripAdvisorRating: number;
   tripAdvisorRatingUrl: string;
-}
-
-export interface HotelEdit {
-  id: string;
-  name: string;
-  address1: string;
-  city: string;
-  shortDescription: string;
-  hotelRating: number;
 }

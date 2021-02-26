@@ -1,13 +1,13 @@
 import { gql } from 'apollo-server-express';
 
 export const typeDefs = gql`
-  type Hotel {
+  type Character {
     id: ID!
     type: String!
     name: String!
     address1: String!
     city: String!
-    hotelRating: Float!
+    characterRating: Float!
     shortDescription: String!
     thumbNailUrl: String!
     tripAdvisorRating: Float!
@@ -15,6 +15,6 @@ export const typeDefs = gql`
   }
 
   type Query {
-    hotels: [Hotel!]!
+    characters: [Character!]!
   }
 `

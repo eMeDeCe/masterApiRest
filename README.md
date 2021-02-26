@@ -79,36 +79,36 @@ export * from './graphql.client';
 
 ```
 
-- Update `hotel-collection` api:
+- Update `character-collection` api:
 
-### ./src/pods/hotel-collection/api/hotel-collection.api.ts
+### ./src/pods/character-collection/api/character-collection.api.ts
 
 ```diff
 import Axios from 'axios';
 + import { graphQLClient } from 'core/api';
-import { HotelEntityApi } from './hotel-collection.api-model';
+import { CharacterEntityApi } from './character-collection.api-model';
 
-const url = '/api/hotels';
+const url = '/api/characters';
 
-export const getHotelCollection = async (): Promise<HotelEntityApi[]> => {
+export const getCharacterCollection = async (): Promise<CharacterEntityApi[]> => {
 + const query = `
 +   query {
-+     hotels {
++     characters {
 +       id
 +       name
 +       shortDescription
-+       hotelRating
++       characterRating
 +       address1
 +       thumbNailUrl
 +     }
 +   }
 + `;
-- const { data } = await Axios.get<HotelEntityApi[]>(url);
+- const { data } = await Axios.get<CharacterEntityApi[]>(url);
 - return data;
-+ const { hotels } = await graphQLClient.request<GetHotelCollectionResponse>(
++ const { characters } = await graphQLClient.request<GetCharacterCollectionResponse>(
 +   query
 + );
-+ return hotels;
++ return characters;
 };
 
 ...

@@ -2,7 +2,7 @@ import 'regenerator-runtime/runtime';
 import express from 'express';
 import path from 'path';
 import { ApolloServer } from 'apollo-server-express';
-import { hotelApi } from './api';
+import { characterApi } from './api';
 import { typeDefs, resolvers } from './graphql';
 
 const PORT = 3000;
@@ -11,7 +11,7 @@ app.use(express.json());
 
 const publicPath = path.resolve(__dirname, './public');
 app.use(express.static(publicPath));
-app.use('/api/hotels', hotelApi);
+app.use('/api/characters', characterApi);
 
 const graphqlServer = new ApolloServer({
   typeDefs,
