@@ -14,10 +14,8 @@ export const getCharacterCollection = async (): Promise<CharacterEntityApi[]> =>
       characters {
         id
         name
-        shortDescription
-        characterRating
-        address1
-        thumbNailUrl
+        gender
+        species
       }
     }
   `;
@@ -27,7 +25,7 @@ export const getCharacterCollection = async (): Promise<CharacterEntityApi[]> =>
   return characters;
 };
 
-export const deleteCharacter = async (id: string): Promise<boolean> => {
+export const deleteCharacter = async (id: number): Promise<boolean> => {
   await Axios.delete(`${url}/${id}`);
   return true;
 };

@@ -6,11 +6,11 @@ let characters = [...mockCharacters];
 
 export const getCharacterList = async (): Promise<Character[]> => characters;
 
-export const getCharacter = async (id: string): Promise<Character> =>
+export const getCharacter = async (id: number): Promise<Character> =>
   characters.find((h) => h.id === id);
 
 export const insertCharacter = async (characterEdit: CharacterEdit) => {
-  const newId = crypto.randomBytes(16).toString('hex');
+  const newId = Math.random();
   characters = [
     ...characters,
     {
@@ -35,7 +35,7 @@ export const updateCharacter = async (characterEdit: CharacterEdit): Promise<boo
   return true;
 };
 
-export const deleteCharacter = async (id: string): Promise<boolean> => {
+export const deleteCharacter = async (id: number): Promise<boolean> => {
   characters = characters.filter((h) => h.id !== id);
   return true;
 };

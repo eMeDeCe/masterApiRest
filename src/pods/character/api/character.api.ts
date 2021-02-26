@@ -4,7 +4,7 @@ import { Lookup } from 'common/models';
 
 const characterListUrl = '/api/characters';
 
-export const getCharacter = async (id: string): Promise<Character> => {
+export const getCharacter = async (id: number): Promise<Character> => {
   const { data } = await Axios.get<Character>(`${characterListUrl}/${id}`);
 
   return data;

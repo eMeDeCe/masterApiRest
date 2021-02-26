@@ -9,7 +9,7 @@ import { linkRoutes } from 'core/router';
 
 export const CharacterContainer: React.FunctionComponent = (props) => {
   const [character, setCharacter] = React.useState<Character>(createEmptyCharacter());
-  const { id } = useParams<{ id: string }>();
+  const { id } : any = useParams();;
   const history = useHistory();
 
   
