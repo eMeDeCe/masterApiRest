@@ -1,5 +1,5 @@
 import { GraphQLClient } from 'graphql-request';
 
-const url = '/graphql';
+const url = 'https://rickandmortyapi.com/graphql ';
 
 export const graphQLClient = new GraphQLClient(url);

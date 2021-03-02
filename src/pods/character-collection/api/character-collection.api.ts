@@ -10,19 +10,35 @@ interface GetCharacterCollectionResponse {
 
 export const getCharacterCollection = async (): Promise<CharacterEntityApi[]> => {
   const query = `
-    query {
-      characters {
+  query {
+    characters {
+      results {
         id
         name
+        status
         gender
-        species
+          origin {
+          name
+          
+        }
+        image
+        episode {
+          name
+        }
+       
+         location {
+            name
+        }
+        created
       }
     }
+  }
   `;
   const { characters } = await graphQLClient.request<GetCharacterCollectionResponse>(
     query
   );
-  return characters;
+  console.log("aqui graphql >>", characters);
+  return characters.results;
 };
 
 export const deleteCharacter = async (id: number): Promise<boolean> => {
