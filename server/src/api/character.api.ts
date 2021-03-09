@@ -9,7 +9,7 @@ import {
 } from '../db';
 
 export const characterApi = Router();
-
+console.log("hoooola");
 characterApi
   .get('/', async (req, res) => {
     const characters = await getCharacterList();
@@ -18,7 +18,9 @@ characterApi
   .delete('/:id', async (req, res) => {
     const id : any = req.params.id;
     const success = await deleteCharacter(id);
+
     res.send(success);
+
   })
   .get('/:id', async (req, res) => {
     const id : any  = req.params.id;

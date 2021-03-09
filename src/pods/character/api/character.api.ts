@@ -1,21 +1,40 @@
 import Axios from 'axios';
 import { Character } from './character.api-model';
-import { Lookup } from 'common/models';
+import { graphQLClient } from 'core/api';
 
-const characterListUrl = '/api/characters';
+interface GetCharacterResponse {
+  charactersByIds: Character;
+}
 
 export const getCharacter = async (id: number): Promise<Character> => {
-  const { data } = await Axios.get<Character>(`${characterListUrl}/${id}`);
+  const query = `
+  query {
+    charactersByIds (ids: ${id}) { 
+           id
+           name
+           status
+           gender
+             origin {
+             name
+             
+           }
+           image
+           episode {
+             name
+           }
+          
+            location {
+               name
+           }
+           created
+         }
+       
+   }
+  `;
 
-  return data;
-};
+ const { charactersByIds } = await graphQLClient.request<GetCharacterResponse>(
+    query
+    );
+    return charactersByIds[0];
+  };
 
-
-export const saveCharacter = async (character: Character): Promise<boolean> => {
-  if (character.id) {
-    await Axios.patch<Character>(`${characterListUrl}/${character.id}`, character);
-  } else {
-    await Axios.post<Character>(characterListUrl, character);
-  }
-  return true;
-};

@@ -12,6 +12,7 @@ app.use(express.json());
 const publicPath = path.resolve(__dirname, './public');
 app.use(express.static(publicPath));
 app.use('/api/characters', characterApi);
+console.log("public");
 
 const graphqlServer = new ApolloServer({
   typeDefs,
