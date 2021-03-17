@@ -1,38 +1,49 @@
 import * as React from 'react';
 import { useHistory } from 'react-router-dom';
 import { linkRoutes } from 'core/router';
-import { getCharacter } from './api';
 import { useCharacterCollection } from './character-collection.hook';
 import { CharacterCollectionComponent } from './character-collection.component';
+import { FormFilter } from '../filterForm'
 
 export const CharacterCollectionContainer = () => {
-  const { characterCollection, loadCharacterCollection } = useCharacterCollection();
+  const { characterCollection, loadCharacterCollection, loadCharacterCollectionFilterName } = useCharacterCollection();
   const history = useHistory();
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [newSearch, setNewSearch] = React.useState("");
 
   React.useEffect(() => {
-    loadCharacterCollection();
-  }, []);
+    loadCharacterCollection(currentPage);
+  }, [currentPage]);
 
-  const handleCreateCharacter = () => {
-    history.push(linkRoutes.createCharacter);
+  React.useEffect(() => {
+    if (newSearch !== "") {
+      loadCharacterCollectionFilterName(newSearch);
+    }
+  }, [newSearch]);
+
+
+
+  const handlePagination = (e: React.ChangeEvent<HTMLInputElement>, paginita: number) => {
+    setCurrentPage(paginita);
   };
 
   const handleDetails = (id: number) => {  
     history.push(linkRoutes.detailsCharacter(id));
   };
-  
-  const handleDelete = async (id: number) => {
-    /*await getCharacter(id);
-    loadCharacterCollection();*/
-    console.log("aqui");
-  };
+
+
+  const handlerNewfinder = (newSearchName) => {
+    setNewSearch(newSearchName);
+
+  }
 
   return (
+    <>
+    <FormFilter handlerName={ handlerNewfinder } />
     <CharacterCollectionComponent
       characterCollection={characterCollection}
-      oncreateCharacter={handleCreateCharacter}
-      onDetails={handleDetails}
-      onDelete={handleDelete}
-    />
+      onPagination={handlePagination}
+      onDetailsA={handleDetails} />
+    </>
   );
 };

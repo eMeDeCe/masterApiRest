@@ -34,8 +34,3 @@ export const updateCharacter = async (characterEdit: CharacterEdit): Promise<boo
 
   return true;
 };
-
-export const deleteCharacter = async (id: number): Promise<boolean> => {
-  characters = characters.filter((h) => h.id !== id);
-  return true;
-};
