@@ -14,7 +14,7 @@ export const FormFilter: React.FunctionComponent<Props> = (
  
   const formik = useFormik({
     initialValues: {
-      characterName: ''
+      characterName: ""
     },
   
     onSubmit: () => {},

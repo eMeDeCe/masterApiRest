@@ -42,10 +42,11 @@ export const getCharacterCollection = async (pageNumber): Promise<CharacterEntit
 
 
 
-export const getCharacterCollectionFilterName = async (pageNumber): Promise<CharacterEntityApi[]> => { 
-  const queryName = `
-  query {
-    characters (filter: {name: "rick"} )  {
+export const getCharacterCollectionFilterName = async (nameSearch : String): Promise<CharacterEntityApi[]> => { 
+  
+  const query  = `
+  query test ($name: String = "${nameSearch}") {
+    characters (filter: {name: $name} )  {
       results {
         id
         name
@@ -68,11 +69,9 @@ export const getCharacterCollectionFilterName = async (pageNumber): Promise<Char
     }
   }
   `;
-  const { charactersName } = await graphQLClient.request(
-    queryName
+  const { characters } = await graphQLClient.request<GetCharacterCollectionResponse>(
+    query
   );
-
-  console.log (charactersName);
-  return charactersName.results;
+  return characters.results;
 };
 
