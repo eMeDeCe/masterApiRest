@@ -45,7 +45,7 @@ export const getCharacterCollection = async (pageNumber): Promise<CharacterEntit
 export const getCharacterCollectionFilterName = async (nameSearch : String): Promise<CharacterEntityApi[]> => { 
   
   const query  = `
-  query test ($name: String = "${nameSearch}") {
+  query ($name: String = "${nameSearch}") {
     characters (filter: {name: $name} )  {
       results {
         id
@@ -74,4 +74,3 @@ export const getCharacterCollectionFilterName = async (nameSearch : String): Pro
   );
   return characters.results;
 };
-

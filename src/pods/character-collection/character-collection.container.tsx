@@ -36,7 +36,6 @@ export const CharacterCollectionContainer = () => {
     setNewSearch(newSearchName);
 
   }
-
   return (
     <>
     <FormFilter handlerName={ handlerNewfinder } />

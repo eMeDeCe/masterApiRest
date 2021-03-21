@@ -16,12 +16,12 @@ export const useCharacterCollection = () => {
  
 
   const loadCharacterCollectionFilterName = function (newSearch) {
-    console.log("dentro");
     getCharacterCollectionFilterName(newSearch)
     .then((result) =>
     setCharacterCollection(mapToCollection(result, mapFromApiToVm))
     );
   }
 
-  return { characterCollection, loadCharacterCollection, loadCharacterCollectionFilterName };
+
+  return { characterCollection, loadCharacterCollection, loadCharacterCollectionFilterName};
 };

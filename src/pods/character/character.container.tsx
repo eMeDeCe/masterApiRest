@@ -15,7 +15,6 @@ export const CharacterContainer: React.FunctionComponent = (props) => {
   };
 
   React.useEffect(() => {
-    console.log("id ->", id);
     if (id) {
       handleLoadCharacter();
     }
