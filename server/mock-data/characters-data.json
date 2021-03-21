@@ -618,7 +618,7 @@
   "comments": [
     {
       "id": 1,
-      "text": "modificando",
+      "text": "Personaje inspirado en el Dr. Doc de Regreso al Futuro",
       "exist": true
     },
     {
@@ -640,6 +640,11 @@
       "id": 9,
       "text": "jijij",
       "exist": true
+    },
+    {
+      "id": 2,
+      "text": "Personaje principal. Inspirado en Bart Simpson.",
+      "exist": false
     }
   ]
 }
